@@ -2,7 +2,7 @@
 A result builder implementation that allows to define shape building closures and variables.
 
 ## Problem
-In SwiftUI, you can end up in situation in which you would to change `Shape` property based on a view style. Imagine, you build view that should either take a circular appearance or rounds its corners given a certain corner radius. Probably you would end up with something along the lines of:
+In SwiftUI, you can end up in a situation in which you would to change a `Shape` property based on a view style. Imagine, you build a view that should either take a circular appearance or have its corners rounded given a certain corner radius. Probably you would end up with something along the lines of:
 
 ```swift
 struct MyFancyView: View {
