@@ -2,7 +2,7 @@
 A result builder implementation that allows to define shape building closures and variables.
 
 ## Problem
-In SwiftUI, you can end up in a situation in which you would to change a `Shape` property based on a view style. Imagine, you build a view that should either take a circular appearance or have its corners rounded given a certain corner radius. Probably you would end up with something along the lines of:
+In SwiftUI, you can end up in a situation in which you would like to change a `Shape` property based on a view style. Imagine, you build a view that should either take a circular appearance or have its corners rounded given a certain corner radius. Probably you would end up with something along the lines of:
 
 ```swift
 struct MyFancyView: View {
@@ -27,7 +27,7 @@ However, this code doesn't compile because maskingLayer declares an opaque retur
 
 ## Possible solutions
 ### Type erasure
-One way to solve this is to introduce an AnyShape type-erased helper shape and erase the return maskingLayer to AnyShape. This is a similar approach to SwiftUI's built-in AnyView type-erasing View wrapper.
+One way to solve this is to introduce a type-erased AnyShape helper and erase the returned maskingLayer to AnyShape. This approach is similar to SwiftUI's built-in, type-erasing AnyView.
 
 ```swift
 struct AnyShape: Shape {
@@ -63,7 +63,7 @@ struct MyFancyView: View {
 As you can see, this requires us to wrap our raw shapes in AnyShape type-erasing wrappers which isn't the most beautiful code you'll ever see, but it works, doesn't it? 🤷‍♂️
 
 ## Result builders to the rescue
-A second approach of solving this, is to define a result builder similar to SwiftUI's own `@ViewBuilder`. This library implements the `@ShapeBuilder` and `@InsettableShapeBuilder` result builders, allowing you to get rid of type-erasing shape wrappers and even return statements. Mark your computed property or functions with the according result builder name and you're good to go.
+A second approach to solving this, is to define a result builder similar to SwiftUI's own `@ViewBuilder`. This library implements `@ShapeBuilder` and `@InsettableShapeBuilder` result builders, allowing you to get rid of type-erasing shape wrappers views and even return statements. Mark your computed property or functions with the according result builder and you're good to go.
 
 ```swift
 struct MyFancyView: View {
@@ -85,7 +85,7 @@ struct MyFancyView: View {
 ```
 
 ### BuiltShape / BuiltInsettableShape
-Additionally, this library provides the `BuiltShape` and `BuiltInsettableShape` protocols. Both protocols share similarities with SwiftUI's `View` protocol. They define a get-only `shape` computed property which is marked with a `@ShapeBuilder`/`@InsettableShapeBuilder` annotation.
+Additionally, this library provides the `BuiltShape` and `BuiltInsettableShape` protocols which shares similiarities with SwiftUI's `View` protocol. They define a get-only `shape` computed property which is marked with a `@ShapeBuilder`/`@InsettableShapeBuilder` annotation.
 
 This allows you to define `BuiltShape`s which themselves are shapes and take the form of the shape property.
 
