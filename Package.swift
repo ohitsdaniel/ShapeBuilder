@@ -1,4 +1,4 @@
-// swift-tools-version:5.4
+// swift-tools-version:5.3
 import PackageDescription
 
 let package = Package(
@@ -23,7 +23,8 @@ let package = Package(
       dependencies: []
     ),
     .testTarget(name: "ShapeBuilderTests", dependencies: ["ShapeBuilder", "SnapshotTesting"], exclude: ["__Snapshots__"]) // dev
-  ]
+  ],
+  swiftLanguageVersions: [.v5]
 )
 
 #if canImport(PackageConfig)
